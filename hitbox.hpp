@@ -1,25 +1,24 @@
 // hitbox.cpp
 
 #include "meta/vec2.hpp"
-static class rect{
-  	vec2 pos,size; //position and size of rect
+class rect{
   public:
-    rect(vec2 pos, vec2 size){
+    vec2 pos,size; //position and size of rect
+
+    rect(vec2 _pos, vec2 _size){
         pos = _pos;
         size = _size;
     }
-}
-
-} typedef rect;
-
+};
 
 class hitbox{
+  public:
     rect boundary;
     vec2 midpoint;
     float radiusS; //length from midpoint to corner (squared to avoid complex computation)
-  public:
-    hitbox(rect _b){
-        boundary = _b;
+
+    hitbox(rect a){
+        boundary = a;
         midpoint = boundary.size * 0.5 + boundary.pos;
         radiusS = 0.25*(boundary.size * boundary.size);
     }
@@ -29,9 +28,9 @@ class hitbox{
         return directDistance < radiusS + h.radiusS;
     }
     bool collisionPoint(vec2 pos){
-        return (boundary.pos.x < pos.x) && (boundary.pos.x + boundary.size.x > pos.x) && (boundary.pos.y < pos.y) && (boundary.pos.y + h1.boundary.size.y > pos.y);
+        return (boundary.pos.x < pos.x) && (boundary.pos.x + boundary.size.x > pos.x) && (boundary.pos.y < pos.y) && (boundary.pos.y + boundary.size.y > pos.y);
     }
-    bool operator?(hitbox h){ //collidesWith
+    bool operator*(hitbox h){ //collidesWith
         if(collisionCircle(h)){
             return (boundary.pos.x + boundary.size.x < h.boundary.pos.x ||
                     h.boundary.pos.x + h.boundary.size.x < boundary.pos.x ||
@@ -40,4 +39,4 @@ class hitbox{
         }
         return false;
     }
-}
+};

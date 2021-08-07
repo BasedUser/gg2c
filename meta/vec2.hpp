@@ -1,8 +1,9 @@
 // vec2.cpp
 
 class vec2{
-    float x,y;
   public:
+    float x,y;
+
     vec2(){
         x = 0;
         y = 0;
@@ -11,12 +12,13 @@ class vec2{
         x = _x;
         y = _y;
     }
+
     //dot product of 2 vectors
     float operator*(vec2 a){
-    	return a.x * x + a.y * y;
-		}
+        return a.x * x + a.y * y;
+                }
     float dotProduct(vec2 a, vec2 b){
-    	return a.x * b.x + a.y * a.y;
+        return a.x * b.x + a.y * a.y;
     }
 
     //add vector
@@ -26,6 +28,15 @@ class vec2{
     void operator+=(vec2 a){
         x += a.x;
         y += a.y;
+    }
+
+    //subtract vector
+    vec2 operator-(vec2 a){
+        return vec2(a.x - x, a.y - y);
+    }
+    void operator-=(vec2 a){
+        x -= a.x;
+        y -= a.y;
     }
 
     //scale vector
