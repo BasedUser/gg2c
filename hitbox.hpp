@@ -1,6 +1,6 @@
 // hitbox.cpp
 
-#include "meta/vec2.cpp"
+#include "meta/vec2.hpp"
 static class rect{
   	vec2 pos,size; //position and size of rect
   public:
