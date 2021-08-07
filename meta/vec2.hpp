@@ -15,7 +15,7 @@ class vec2{
     float operator*(vec2 a){
     	return a.x * x + a.y * y;
 		}
-    float dotProduct(vec2 a, b){
+    float dotProduct(vec2 a, vec2 b){
     	return a.x * b.x + a.y * a.y;
     }
 
@@ -23,16 +23,16 @@ class vec2{
     vec2 operator+(vec2 a){
         return vec2(a.x + x, a.y + y);
     }
-    vec2 operator+=(vec2 a){
-        x += a->x;
-        y += a->y;
+    void operator+=(vec2 a){
+        x += a.x;
+        y += a.y;
     }
 
     //scale vector
     vec2 operator*(float a){
         return vec2(x * a, y * a);
     }
-    vec2 operator*=(float a){
+    void operator*=(float a){
         x *= a, y *= a;
     }
-}
+};
